@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //call, apply, aur bind ka use hum tab karte hain jab humein function ke andar this ko kisi specific object ke sath bind karna ho.
+        //CAll: same code function repeate... 
+        const person = {
+        firstName: "John", 
+        lastName: "Doe",
+        fullName: function(city, country) {
+            return `${this.firstName} ${this.lastName} from ${city}, ${country}`;
+        }
+        };
+        const person1 = {
+        firstName: "vipin", 
+        lastName: "chauhan",
+        fullName: function(city, country) {
+            return `${this.firstName} ${this.lastName} from ${city}, ${country}`;
+        }
+        };
+        console.log(person.fullName.call(person, "New York", "USA")); 
+        console.log(person1.fullName.call(person1,'moradabad','uttar pradesh'));
+        // Output: "John Doe from New York, USA"
+
+        //CALL:2
+        function adress(city, country) {
+            return this.fullName = `${this.firstName} ${this.lastName} from ${city}, ${country}`;
+        }
+        const person2 = {
+        firstName: "vipin", 
+        lastName: "chauhan",
+        fullName: adress
+        };
+        console.log(person2.fullName.call(person2, 'up','nbvc'));  // it take any string,object .. params
+        //Appy
+        const person3 = {
+        firstName: "vipin", 
+        lastName: "chauhan",
+        fullName: adress
+        };
+        console.log(person3.fullName.apply(person3, ['gzd','up'])); //its takes array params
+        //Bind
+        const person4 = {
+        firstName: "vipin", 
+        lastName: "chauhan",
+        fullName: adress
+        };
+        let bandmecallkrunga = person4.fullName.bind(person4, 'gzd','bind'); // ap isko ban me call kr sakhte hai
+        console.log(bandmecallkrunga.call());
+        console.log(person4);
+        
+    </script>
+</head>
+
+<body>
+    <h1>Definition of call, apply, and bind in JavaScript</h1>
+    <p>
+        <h1>call:</h1>
+        <p>
+            A method that invokes a function immediately with a specified this context and arguments passed individually.
+            Key Point: Executes the function immediately with given arguments.
+        </p>
+
+        <h1>apply:</h1>
+        <p>
+            A method that invokes a function immediately with a specified this context and arguments passed as an array.
+            Key Point: Similar to call, but arguments are passed as an array.
+        </p>
+
+        <h1>bind:</h1>
+        <p>
+            A method that returns a new function with a specified this context and optionally preset arguments, without
+            invoking it immediately.
+            Key Point: Returns a new function that can be invoked later.
+        </p>
+    </p>
+</body>
+
+</html>
