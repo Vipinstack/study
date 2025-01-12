@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Lexical scope and Closure</h2>
+    <button id="red">red</button>
+    <button id="green">green</button>
+    <script>
+        //lexical scrop : closure me inner function ko uske parent(outer fucntion) 
+        // k varible access kar sakhta hai usko lexical scope hota hai.
+        
+        // function outerFun(){
+        //     let name='Vipin Chauhan';
+        //     email:function inner(){
+        //         console.log('lexical scrop ko access kar sakhta hai',name);
+        //     }
+        //     inner();
+        // } 
+        // outerFun();
+        // console.log('kiya hum lexical scope ko bar access kar sakhte hai..',name);
+
+
+        // closure: aghr hum kisi inner function ko return krte hui toh wo apne scope k sath lexical scope ko bhi retrun karega
+        
+        // function closure(){
+        //     let name ='closure..'
+        //     return function inner(...rest) {
+        //         console.log(name, rest);
+        //     }
+        // }
+        // // closure()();
+        // console.log(closure()('data check kar hu..','csijkfdd'));
+
+        function buttonHandler(color){
+            return function colors(){
+                document.body.style.background=`${color}`;
+            }
+        }
+        
+        document.getElementById('red').onclick = buttonHandler('red');
+        document.getElementById('green').onclick = buttonHandler('green');
+        
+        </script>
+        <script>
+            // Real-life example of closure: A simple bank account
+            function createBankAccount(initialBalance) {
+                let balance = initialBalance;
+                return {
+                    deposit: function(amount) {
+                        balance += amount;
+                        return balance;
+                    },
+                    withdraw: function(amount) {
+                        if (amount <= balance) {
+                            balance -= amount;
+                            return balance;
+                        } else {
+                            return 'Insufficient funds';
+                        }
+                    },
+                    getBalance: function() {
+                        return balance;
+                    }
+                }
+            }
+        
+            const account = createBankAccount(100);
+            console.log(account.getBalance()); // 100
+            console.log(account.deposit(50)); // 150
+            console.log(account.withdraw(30)); // 120
+            console.log(account.getBalance()); // 120
+            console.log(account.withdraw(200)); // Insufficient funds
+        </script>
+</body>
+</html>
