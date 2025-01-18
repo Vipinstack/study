@@ -1,3 +1,8 @@
+bobbling or currying 
+Explain call(), apply(), and bind()
+debouncing and throttling 
+lexical scope & closures
+memorization
 var and let or const scope
 function declaration and expression
 currying function
@@ -6,14 +11,8 @@ callbacks and promise
 hosting
 IIFE
 this keywords
-lexical scope
-closures
 recursion
-memorization
 event handling
-bobbling or currying 
-debouncing and throttling 
-Explain call(), apply(), and bind()
 Execution Context
 memory leak
 array methods
